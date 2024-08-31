@@ -34,3 +34,6 @@
 .sidebar__links li:first-child {
     margin-bottom: 20px;
 }
+.sidebar__icon {
+    margin-left: 10px;
+}
