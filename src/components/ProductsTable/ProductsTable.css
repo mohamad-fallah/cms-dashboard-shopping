@@ -9,7 +9,6 @@
     background-color: var(--blue);
     border-radius: 10px;
     color: var(--white);
-    width: 985px;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -18,13 +17,16 @@
 .products-table__header-title {
     padding: 20px;
 }
+.mr-custom {
+    margin-left: 120px !important;
+}
 .products-table__main {
-    width: 1540px;
     text-align: center;
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 0 10px 0 30px;
+    border-bottom: 10px solid #F0F0F0;
 }
 .products-table__img {
     width: 130px;
@@ -36,6 +38,7 @@
     object-fit: cover;
     padding: 10px;
     border: 2px dashed var(--blue);
+    cursor: pointer;
 }
 .products-table__main-title {
     padding: 20px;
