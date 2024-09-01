@@ -61,6 +61,7 @@
     color: var(--white);
     padding: 3px 20px;
     border: none;
+    cursor: pointer;
 }
 .header-left__icon {
     padding: 10px;
@@ -74,6 +75,7 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     width: 40px;
     height: 40px;
+    cursor: pointer;
 }
 .header-left__icon-size {
     font-size: 2rem !important;
