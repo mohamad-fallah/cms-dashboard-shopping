@@ -54,3 +54,16 @@
     color: var(--white);
     width: 100%;
 }
+
+.cms-table {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--white);
+}
+.cms-table tr {
+    text-align: center;
+}
+.cms-table th, .cms-table td {
+    padding: 20px;
+}

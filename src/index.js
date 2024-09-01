@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 // component and pages
 import App from "./App";
 // style links
+import "./cms.css";
 import "./custom.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

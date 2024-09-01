@@ -1,5 +1,4 @@
 import React from "react";
-import "./DeleteModal.css";
 import ReactDOM from "react-dom";
 
 export default function DeleteModal({ submit, cancel }) {
