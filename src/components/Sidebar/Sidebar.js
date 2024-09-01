@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { IoHomeOutline } from "react-icons/io5";
 import { MdProductionQuantityLimits } from "react-icons/md";
@@ -15,40 +16,40 @@ export default function Sidebar() {
       <h1 className="sidebar__title">به داشبورد خود خوش آمدید</h1>
       <ul className="sidebar__links">
         <li>
-          <a href="#">
-            <IoHomeOutline className="sidebar__icon"/>
+          <Link to="/products">
+            <IoHomeOutline className="sidebar__icon" />
             صفحه اصلی
-          </a>
+          </Link>
         </li>
         <li className="sidebar__link--active">
-          <a href="#">
-            <MdProductionQuantityLimits className="sidebar__icon"/>
+          <Link to="/products">
+            <MdProductionQuantityLimits className="sidebar__icon" />
             محصولات
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
-            <BiCommentDetail className="sidebar__icon"/>
+          <Link to="/comments">
+            <BiCommentDetail className="sidebar__icon" />
             کامنت ها
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
-            <FiUsers className="sidebar__icon"/>
+          <Link to="/users">
+            <FiUsers className="sidebar__icon" />
             کاربران
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
-            <IoBagCheckOutline className="sidebar__icon"/>
+          <Link to="/orders">
+            <IoBagCheckOutline className="sidebar__icon" />
             سفارشات
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
-            <CiDollar className="sidebar__icon"/>
+          <Link to="/offs">
+            <CiDollar className="sidebar__icon" />
             تخفیفات
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
