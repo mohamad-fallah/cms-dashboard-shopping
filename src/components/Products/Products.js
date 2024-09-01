@@ -11,7 +11,6 @@ export default function Products() {
       <AddNewProduct />
       <ErrorBox msg={"هیچ محصولی یافت نشد"} />
       <ProductsTable/>
-      <DeleteModal/>
     </>
   );
 }
