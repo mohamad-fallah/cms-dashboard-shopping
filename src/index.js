@@ -7,7 +7,7 @@ import App from "./App";
 // style links
 import "./custom.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.querySelector("body"));
 root.render(
   <>
     <BrowserRouter>
