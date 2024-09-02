@@ -13,6 +13,7 @@ export default function ProductsTable() {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [productId, setProductId] = useState(null);
+  const [mainProductIfno, setMainProductIfno] = useState({})
   
 
   useEffect(() => {
@@ -73,7 +74,10 @@ export default function ProductsTable() {
                 <td className="products-table__main-title">
                   <button
                     className="products-table__btn"
-                    onClick={() => setIsShowDetailModal(true)}
+                    onClick={() => {
+                      setIsShowDetailModal(true)
+                      setMainProductIfno(product)
+                    }}
                   >
                     جزئیات
                   </button>
@@ -108,7 +112,25 @@ export default function ProductsTable() {
           cancel={deleteModalCancelActions}
         />
       )}
-      {isShowDetailModal && <DetailModal onHide={closeDetailsModal} />}
+      {isShowDetailModal && <DetailModal onHide={closeDetailsModal} >
+      <table className="cms-table">
+          <thead>
+            <tr>
+              <th>محبوبیت</th>
+              <th>فروش</th>
+              <th>رنگبندی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{mainProductIfno.popularity}</td>
+              <td>{mainProductIfno.sale}</td>
+              <td>{mainProductIfno.colors}</td>
+            </tr>
+          </tbody>
+        </table>
+        </DetailModal>
+        }
       {isShowEditModal && (
         <EditModal
           onClose={() => setIsShowEditModal(false)}

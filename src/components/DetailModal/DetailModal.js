@@ -2,7 +2,7 @@ import React from "react";
 import "./DetailModal.css";
 import { useEffect } from "react";
 
-export default function DetailModal({ onHide }) {
+export default function DetailModal({ onHide, children }) {
   useEffect(() => {
     const checkKey = (event) => {
         console.log(event);
@@ -18,22 +18,7 @@ export default function DetailModal({ onHide }) {
   return (
     <div className="modal-parent active">
       <div className="details-modal">
-        <table className="cms-table">
-          <thead>
-            <tr>
-              <th>اسم</th>
-              <th>قیمت</th>
-              <th>محبوبیت</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>لپ تاپ</td>
-              <td>12,000,000</td>
-              <td>91%</td>
-            </tr>
-          </tbody>
-        </table>
+        {children}
       </div>
     </div>
   );
