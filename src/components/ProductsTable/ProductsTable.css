@@ -58,3 +58,26 @@
     margin-right: 20px;
     cursor: pointer;
 }
+/* start edit modal child style */
+
+.add-product-form-group {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: 90%;
+    background-color: #f4f4f4;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+.edit-product-input {
+    border: none;
+    outline: none;
+    background-color: unset;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 8px 10px;
+}
+
+/* finish edit modal child style */

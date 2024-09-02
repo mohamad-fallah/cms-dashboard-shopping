@@ -3,23 +3,25 @@ import "./ProductsTable.css";
 import { useState } from "react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailModal from "../DetailModal/DetailModal";
+import EditModal from "../EditModal/EditModal";
+import { AiOutlineDollar } from "react-icons/ai";
 
 export default function ProductsTable() {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailModal, setIsShowDetailModal] = useState(false);
+  const [isShowEditModal, setIsShowEditModal] = useState(false);
 
   const deleteModalCancelActions = () => {
-    console.log("بسته");
     setIsShowDeleteModal(false);
   };
   const deleteModalSubmitActions = () => {
-    console.log("باز شد");
     setIsShowDeleteModal(false);
   };
   const closeDetailsModal = () => {
-    setIsShowDetailModal(false)
-  }
-
+    setIsShowDetailModal(false);
+  };
+  const updateProductInfos = (event) => {
+  };
 
   return (
     <>
@@ -60,7 +62,12 @@ export default function ProductsTable() {
               >
                 حذف
               </button>
-              <button className="products-table__btn">ویرایش</button>
+              <button
+                className="products-table__btn"
+                onClick={() => setIsShowEditModal(true)}
+              >
+                ویرایش
+              </button>
             </td>
           </tr>
         </tbody>
@@ -71,10 +78,53 @@ export default function ProductsTable() {
           cancel={deleteModalCancelActions}
         />
       )}
-      {isShowDetailModal && (
-        <DetailModal
-          onHide={closeDetailsModal}
-        />
+      {isShowDetailModal && <DetailModal onHide={closeDetailsModal} />}
+      {isShowEditModal && (
+        <EditModal
+          onClose={() => setIsShowEditModal(false)}
+          onSubmit={updateProductInfos}
+        >
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد کنید"
+              className="edit-product-input"
+            />
+          </div>
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد کنید"
+              className="edit-product-input"
+            />
+          </div>
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد کنید"
+              className="edit-product-input"
+            />
+          </div>
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="عنوان جدید را وارد کنید"
+              className="edit-product-input"
+            />
+          </div>
+        </EditModal>
       )}
     </>
   );
