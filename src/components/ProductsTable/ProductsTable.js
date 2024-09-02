@@ -13,18 +13,26 @@ export default function ProductsTable() {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [productId, setProductId] = useState(null);
-  const [mainProductIfno, setMainProductIfno] = useState({})
-  
+  const [mainProductIfno, setMainProductIfno] = useState({});
+
+  // edit product details
+  const [productNewTitle, setProductNewTitle] = useState("");
+  const [productNewPrice, setProductNewPrice] = useState("");
+  const [productNewCount, setProductNewCount] = useState("");
+  const [productNewImg, setProductNewImg] = useState("");
+  const [productNewPopularity, setProductNewPopularity] = useState("");
+  const [productNewSale, setProductNewSale] = useState("");
+  const [productNewColor, setProductNewColor] = useState("");
 
   useEffect(() => {
-    getAllProduct()
+    getAllProduct();
   }, []);
 
   const getAllProduct = () => {
     fetch("http://localhost:8000/api/products")
-    .then((res) => res.json())
-    .then((products) => setAllProducts(products));
-  }
+      .then((res) => res.json())
+      .then((products) => setAllProducts(products));
+  };
 
   const deleteModalCancelActions = () => {
     setIsShowDeleteModal(false);
@@ -32,11 +40,12 @@ export default function ProductsTable() {
   const deleteModalSubmitActions = () => {
     fetch(`http://localhost:8000/api/products/${productId}`, {
       method: "DELETE",
-    }).then(res => res.json())
-    .then(() => {
-      setIsShowDeleteModal(false);
-      getAllProduct()
     })
+      .then((res) => res.json())
+      .then(() => {
+        setIsShowDeleteModal(false);
+        getAllProduct();
+      });
   };
   const closeDetailsModal = () => {
     setIsShowDetailModal(false);
@@ -75,8 +84,8 @@ export default function ProductsTable() {
                   <button
                     className="products-table__btn"
                     onClick={() => {
-                      setIsShowDetailModal(true)
-                      setMainProductIfno(product)
+                      setIsShowDetailModal(true);
+                      setMainProductIfno(product);
                     }}
                   >
                     جزئیات
@@ -94,7 +103,16 @@ export default function ProductsTable() {
 
                   <button
                     className="products-table__btn"
-                    onClick={() => setIsShowEditModal(true)}
+                    onClick={() => {
+                      setIsShowEditModal(true)
+                      setProductNewTitle(product.title)
+                      setProductNewPrice(product.price)
+                      setProductNewCount(product.count)
+                      setProductNewImg(product.img)
+                      setProductNewPopularity(product.popularity)
+                      setProductNewSale(product.sale)
+                      setProductNewColor(product.colors)
+                    }}
                   >
                     ویرایش
                   </button>
@@ -112,25 +130,26 @@ export default function ProductsTable() {
           cancel={deleteModalCancelActions}
         />
       )}
-      {isShowDetailModal && <DetailModal onHide={closeDetailsModal} >
-      <table className="cms-table">
-          <thead>
-            <tr>
-              <th>محبوبیت</th>
-              <th>فروش</th>
-              <th>رنگبندی</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{mainProductIfno.popularity}</td>
-              <td>{mainProductIfno.sale}</td>
-              <td>{mainProductIfno.colors}</td>
-            </tr>
-          </tbody>
-        </table>
+      {isShowDetailModal && (
+        <DetailModal onHide={closeDetailsModal}>
+          <table className="cms-table">
+            <thead>
+              <tr>
+                <th>محبوبیت</th>
+                <th>فروش</th>
+                <th>رنگبندی</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{mainProductIfno.popularity}</td>
+                <td>{mainProductIfno.sale}</td>
+                <td>{mainProductIfno.colors}</td>
+              </tr>
+            </tbody>
+          </table>
         </DetailModal>
-        }
+      )}
       {isShowEditModal && (
         <EditModal
           onClose={() => setIsShowEditModal(false)}
@@ -144,6 +163,7 @@ export default function ProductsTable() {
               type="text"
               placeholder="عنوان جدید را وارد کنید"
               className="edit-product-input"
+              value={productNewTitle}
             />
           </div>
           <div className="add-product-form-group">
@@ -152,8 +172,9 @@ export default function ProductsTable() {
             </span>
             <input
               type="text"
-              placeholder="عنوان جدید را وارد کنید"
+              placeholder="قیمت جدید را وارد کنید"
               className="edit-product-input"
+              value={productNewPrice}
             />
           </div>
           <div className="add-product-form-group">
@@ -162,8 +183,9 @@ export default function ProductsTable() {
             </span>
             <input
               type="text"
-              placeholder="عنوان جدید را وارد کنید"
+              placeholder="موجودی جدید را وارد کنید"
               className="edit-product-input"
+              value={productNewCount}
             />
           </div>
           <div className="add-product-form-group">
@@ -172,8 +194,42 @@ export default function ProductsTable() {
             </span>
             <input
               type="text"
-              placeholder="عنوان جدید را وارد کنید"
+              placeholder="تصویر جدید را وارد کنید"
               className="edit-product-input"
+              value={productNewImg}
+            />
+          </div>
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="محبوبیت جدید را وارد کنید"
+              className="edit-product-input"
+              value={productNewPopularity}
+            />
+          </div>
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="فروش جدید را وارد کنید"
+              className="edit-product-input"
+              value={productNewSale}
+            />
+          </div>
+          <div className="add-product-form-group">
+            <span>
+              <AiOutlineDollar />
+            </span>
+            <input
+              type="text"
+              placeholder="رنگ بندی جدید را وارد کنید"
+              className="edit-product-input"
+              value={productNewColor}
             />
           </div>
         </EditModal>
