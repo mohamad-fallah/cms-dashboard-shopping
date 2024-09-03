@@ -1,17 +1,17 @@
 import React from "react";
 import "./ProductsTable.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailModal from "../DetailModal/DetailModal";
 import EditModal from "../EditModal/EditModal";
 import { AiOutlineDollar } from "react-icons/ai";
 import ErrorBox from "../ErrorBox/ErrorBox";
 
-export default function ProductsTable() {
+export default function ProductsTable({ allProducts, getAllProduct }) {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailModal, setIsShowDetailModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
-  const [allProducts, setAllProducts] = useState([]);
+  
   const [productId, setProductId] = useState(null);
   const [mainProductIfno, setMainProductIfno] = useState({});
 
@@ -23,16 +23,6 @@ export default function ProductsTable() {
   const [productNewPopularity, setProductNewPopularity] = useState("");
   const [productNewSale, setProductNewSale] = useState("");
   const [productNewColor, setProductNewColor] = useState("");
-
-  useEffect(() => {
-    getAllProduct();
-  }, []);
-
-  const getAllProduct = () => {
-    fetch("http://localhost:8000/api/products")
-      .then((res) => res.json())
-      .then((products) => setAllProducts(products));
-  };
 
   const deleteModalCancelActions = () => {
     setIsShowDeleteModal(false);
