@@ -1,0 +1,75 @@
+.modal-parent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4ms;
+}
+.modal-parent.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.delete-modal {
+    background-color: var(--white);
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+.delete-modal h1 {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.delete-modal__btns {
+    display: flex;
+    column-gap: 20px;
+
+}
+.delete-modal__btn {
+    width: 100%;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 18px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.delete-modal__btn--accept {
+    background-color: var(--blue);
+    color: var(--white);
+    width: 100%;
+}
+.delete-modal__btn--reject {
+    background-color: #FF4F4F;
+    color: var(--white);
+    width: 100%;
+}
+
+.cms-table {
+    font-weight: bold;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--white);
+}
+.cms-table tr {
+    text-align: center;
+}
+.cms-table th, .cms-table td {
+    padding: 20px;
+}
+.cms-main {
+    margin-top: 60px;
+    padding: 20px;
+    border-radius: 10px;
+}
